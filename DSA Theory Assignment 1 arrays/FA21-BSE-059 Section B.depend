@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1666071701 source:c:\users\123\documents\uni assignments sem 3\fa21-bse-059 section b\main.cpp
+	<iostream>
+	<string>
+	<conio.h>
+
+1666071701 source:c:\users\123\documents\uni assignments sem 3\dsa theory assignment 1 arrays\main.cpp
+	<iostream>
+	<string>
+	<conio.h>
+

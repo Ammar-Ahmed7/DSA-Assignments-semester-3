@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1667761879 source:c:\users\123\documents\uni assignments sem 3\zaman snake\main.cpp
+	<iostream>
+	<conio.h>
+	<windows.h>
+	<ctime>
+	<time.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1666540567 source:c:\users\123\documents\uni assignments sem 3\dsa lab ass 1 tic tac toe\main.cpp
+	<iostream>
+	<stdlib.h>
+	<string>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1669154730 source:c:\users\123\documents\uni assignments sem 3\queue assignment\main.cpp
+	<iostream>
+	<Windows.h>
+	<conio.h>
+

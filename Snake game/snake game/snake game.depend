@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1667755498 source:c:\users\ammar\documents\uni assignment sem 3\snake game\main.cpp
+	<iostream>
+	<conio.h>
+	<windows.h>
+	<stdlib.h>
+	<iomanip>
+	<unistd.h>
+
+1669150952 source:c:\users\123\documents\uni assignments sem 3\snake game\snake game\main.cpp
+	<iostream>
+	<conio.h>
+	<windows.h>
+	<stdlib.h>
+	<ctime>
+	<time.h>
+
