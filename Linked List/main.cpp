@@ -38,26 +38,7 @@ void insertatEnd(int d){
 
 }
 
-  void printing(){
-    l=start;
-   if(start==NULL){
-   cout<<"Empty";
-   }
-  while(l->next!=NULL){
-    cout<<l->data;
-    l=l->next;
-  }
-  if(l->next==NULL){
-    cout<<l->data;
-  }
-  if(l->next==start){
-    cout<<"Go to Circular Display";
-  }
-
-  }
-
-
-
+  
   void insertatPoint(int d){
      l=start;
      int p;
@@ -99,6 +80,22 @@ void insertatEnd(int d){
   }
   }
 
+  void printing(){
+    l=start;
+    if(start==NULL){
+   cout<<"Empty";
+    }
+  while(l->next!=NULL){
+    cout<<l->data;
+    l=l->next;
+  }
+  if(l->next==NULL){
+    cout<<l->data;
+  }
+   }
+
+  
+
  void Cprint(){
    l=start;
    if(start==NULL){
@@ -111,8 +108,6 @@ void insertatEnd(int d){
    if(l->next==start){
     cout<<l->data;
   }
-  
-
 
  }
 
@@ -145,7 +140,7 @@ void insertatEnd(int d){
 int main()
 {
     int ch,x,y,z,a;
- while(true){
+   while(true){
     system("cls");
     cout << "Enter \n 1.Insert at End \n 2.To display \n 3.Insert at point \n 4.Delete \n 5.Insert at start \n 6.Circular Display \n 7.Exit = ";
     cin>>ch;
