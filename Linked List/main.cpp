@@ -55,8 +55,6 @@ void insertatEnd(int d){
 
 
 
-
-
   void insertatPoint(int d){
      l=start;
      int p;
@@ -72,6 +70,48 @@ void insertatEnd(int d){
       l->next=temp;
      }
   }
+
+  void Cinsert(int d){
+    l=start;
+    if(start==NULL){
+    start=new Node;
+    start->data=d;
+    start->next=start;
+  }
+
+  else
+  {
+
+   while(l->next!=NULL){
+    l=l->next;
+  }
+
+   if (l->next==NULL){
+    temp=new Node;
+    temp->data=d;
+    temp->next=start;
+    l->next=temp;
+  }
+
+  }
+  }
+
+ void Cprint(){
+   l=start;
+   if(start==NULL){
+   cout<<"Empty";
+   }
+  while(l->next!=start){
+    cout<<l->data;
+    l=l->next;
+  }
+  if(l->next==start){
+    cout<<l->data;
+  }
+ }
+
+
+
 
   void del(int d){
    l=start;
@@ -96,19 +136,14 @@ void insertatEnd(int d){
   
 
 
-  
-
-
-
-
 int main()
 {
-    int ch,x,y,z;
+    int ch,x,y,z,a;
  while(true){
     system("cls");
-    cout << "Enter \n 1.Insert at End \n 2.To display \n 3.Insert at point \n 4.Delete \n 5.Exit = ";
+    cout << "Enter \n 1.Insert at End \n 2.To display \n 3.Insert at point \n 4.Delete \n 5.Insert at start \n 6.Circular Display \n 7.Exit = ";
     cin>>ch;
-    while(ch!=1 && ch!=2 && ch!=3 && ch!=4 && ch!=5){
+    while(ch!=1 && ch!=2 && ch!=3 && ch!=4 && ch!=5 && ch!=6 && ch!=7){
       cout<<"\n Invalid";
       Sleep(500);
       cin.clear();
@@ -167,6 +202,26 @@ int main()
     break;
 
     case 5:
+     while(true){
+     system("cls");
+     cout<<"Enter value you want to insert or press -1 to exit = ";
+     cin>>a;
+     if(a==-1){
+        break;
+     }
+     else{
+     Cinsert(a);
+     }
+     }
+    break;
+
+    case 6:
+    system("cls");
+    Cprint();
+    getch();
+    break;
+
+    case 7:
     exit(0);
     break;
  }
