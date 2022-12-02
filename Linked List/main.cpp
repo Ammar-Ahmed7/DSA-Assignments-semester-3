@@ -50,6 +50,9 @@ void insertatEnd(int d){
   if(l->next==NULL){
     cout<<l->data;
   }
+  if(l->next==start){
+    cout<<"Go to Circular Display";
+  }
 
   }
 
@@ -105,9 +108,12 @@ void insertatEnd(int d){
     cout<<l->data;
     l=l->next;
   }
-  if(l->next==start){
+   if(l->next==start){
     cout<<l->data;
   }
+  
+
+
  }
 
 
