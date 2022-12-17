@@ -7,13 +7,15 @@ using namespace std;
 class Node{
      public:
      int data;
-     Node * next;
+     Node * next;   
 };
 Node * start,* l,* temp;
 
+
 void insertatEnd(int d){
   l=start;
-  if(start==NULL){
+  if
+  (start==NULL){
     start=new Node;
     start->data=d;
     start->next=NULL;

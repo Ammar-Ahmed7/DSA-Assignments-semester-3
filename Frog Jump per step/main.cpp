@@ -14,8 +14,7 @@ char ch[MAX]={'_','+','o'};
 
 
 int x,y;
-enum eDirection{ STOP =0, LEFT,RIGHT,UP,DOWN};
-eDirection dir;
+
 
 
 struct Node{
@@ -60,7 +59,6 @@ void blocPrint(){
 
 void setup(){
  gameOver= false;
- dir = STOP;
   x= 10 /  2 ;
   y= 10 / 2 ;
 
@@ -104,20 +102,19 @@ void input(){
     switch(_getch()){
 
        case 'a':
-        dir= LEFT;
-        
+        x--;
         break;
 
         case 'd':
-        dir= RIGHT;
+        x++;
         break;
 
         case 'w':
-        dir= UP;
+        y--;
         break;
 
         case 's':
-        dir= DOWN;
+        y++;
         break;
 
         case '':
@@ -128,44 +125,17 @@ void input(){
   }
 }
 
-void logic(){
-  switch(dir){
-
-     case LEFT:
-     x--;
-     break;
-
-     case RIGHT:
-     x++;
-     break;
-
-     case UP:
-     y--;
-     break;
-
-     case DOWN:
-     y++;
-     break;
-
-     default:
-     break;
-
-  }
-}
 
 
 int main()
 {
     system("cls");
-
-   srand (time(NULL));
    
     setup();
-     blocset(); 
+    blocset(); 
     while(!gameOver){
     blocks();
     input();
-    logic();
     }
 
 
