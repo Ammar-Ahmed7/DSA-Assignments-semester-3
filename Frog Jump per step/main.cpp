@@ -26,7 +26,7 @@ Node *start,*l,*temp;
 void blocset(){
     system("cls");
     int no=0;
- while(no!=10){   
+ while(no!=20){   
     int tempt=rand()% MAX;
    l=start;
    if(start==NULL){
@@ -59,8 +59,8 @@ void blocPrint(){
 
 void setup(){
  gameOver= false;
-  x= 10 /  2 ;
-  y= 10 / 2 ;
+  x= 2;
+  y= 2 ;
 
   
 
@@ -70,13 +70,12 @@ void setup(){
 
 void blocks(){
      system("cls");
-     l=start;
-    for(int i=0; i<10; i++){
-       
-     for(int j=0 ; j<10; j++){
-         
+      l=start;
+    for(int i=0; i<5; i++){
+     for(int j=0 ; j<5; j++){
            if(i==y && j==x){
                cout.width(3);
+                l->data=' ';
                 cout<<"F";
                 l=l->next;
             }
@@ -86,10 +85,11 @@ void blocks(){
             cout<<l->data;
             l=l->next; 
           }
-          
+          if(l->next==NULL){
+            l=start;
+          }
+        
      }
-     
-     l=start;
      cout<<endl;
     }
     
