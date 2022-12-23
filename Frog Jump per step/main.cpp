@@ -92,14 +92,11 @@ void blocks(){
     }
 }
 
-void logic(){
+void boundary(){
 
  if(x>4 || x<0 || y>3 || y<0){
     gameOver=true;
  }
-
- 
-    
     
 }
   
@@ -116,7 +113,7 @@ void input(){
 for(int i=0; i<4; i++){
      for(int j=0 ; j<5; j++){
            if(i==y && j==x){
-                if(l->data==' '){
+                if(l->data==' '){ 
                    gameOver=true;
                 }
                 }
@@ -223,7 +220,7 @@ int main()
     while(!gameOver){
     blocks();
     input();
-    logic();
+    boundary();
     }
 
 
