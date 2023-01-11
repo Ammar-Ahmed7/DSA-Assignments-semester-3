@@ -39,6 +39,7 @@ void insertAtSpecificLocation(){
     cin    >> nodeData;
     cout << "Enter the data which you want to insert : ";
     cin    >> data;
+    l=start;
     while(l -> data != nodeData){
         l=l->next;
     }
@@ -48,6 +49,7 @@ void insertAtSpecificLocation(){
         temp -> data = data;
         temp -> next=l -> next;
         l -> next= temp;
+        temp->prev=l;
     }
 }
 
@@ -73,11 +75,11 @@ void deletee(){
 
 void display(){
     l=start;
-    while (l -> prev!=NULL){
+    while (l -> next!=NULL){
         cout << l->data<<endl;
-        l=l -> prev;
+        l=l -> next;
     }
-    if(l -> prev==NULL){
+    if(l -> next==NULL){
         cout << l->data<<endl;
     }
 }
@@ -98,12 +100,14 @@ int main() {
                 break;
             case 2:
                 insertAtSpecificLocation();
+                main();
                 break;
             case 3:
                 deletee();
                 break;
             case 4:
                 display();
+                getch();
                 break;
             case 5:
                 exit(0);

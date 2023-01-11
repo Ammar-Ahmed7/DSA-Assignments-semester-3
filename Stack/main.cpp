@@ -4,7 +4,7 @@ using namespace std;
 
 struct stk{
 
-char a[10];
+int a[10];
 int top;
 }s;
 
