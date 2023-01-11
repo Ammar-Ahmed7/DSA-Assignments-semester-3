@@ -47,7 +47,7 @@ void blocset(){
     system("cls");
     int no=0;
  while(no<=25){
-    int tempt=rand()% MAX;
+    int tempt=rand()% MAX;                   // Creating 25 blocks of Node
    l=start;
    if(start==NULL){
     start=new Node;
@@ -92,7 +92,7 @@ void blocks(){
     }
     cout<<"\t\t\t\t";
       l=start;
-    for(int i=0; i<5; i++){
+    for(int i=0; i<5; i++){                           //  Printing Blocks of Nodes
      for(int j=0 ; j<5; j++){
            if(i==y && j==x){
             cout.width(9);
@@ -128,7 +128,7 @@ void boundary(){
   for(int i=0;i<10;i++){
     cout<<endl;
     }
-    cout<<"\t\t\t\t\t" <<Pname<<" YOU DROWNED AS YOU WERE OUT OF BOUND :( ";
+    cout<<"\t\t\t\t\t" <<Pname<<" YOU DROWNED AS YOU WERE OUT OF BOUND :( ";     //Creating Boundary
     Sleep(2000);
     gameOver=true;
  }
@@ -137,7 +137,7 @@ void boundary(){
 
 
 
-void Input_and_Logic(){
+void Input_and_Logic(){                        //Input movements with Logic
 
   if(_kbhit()){
 
@@ -274,12 +274,12 @@ for(int i=0; i<5; i++){
         for(int j=0 ; j<5; j++){
            if(i==y && j==x){
                 if(l->data==' '){
-                   drowned();  
+                   drowned();
                 }
 
               else if(l->data=='@'){
                 won();
-                
+
                }
               else if(l->data=='_'){
                   l=l->next;
@@ -327,7 +327,7 @@ void drowned(){
     cout<<"\t\t\t\t\t\t"<<Pname<<" YOU DROWNED :( ";
     Sleep(2000);
     gameOver=true;
-    
+
 
 }
 
@@ -337,9 +337,9 @@ void won(){
     cout<<endl;
     }
     cout<<"\t\t\t\t\t\t"<<Pname<<" YOU WIN :) ";
-    Sleep(2000);
+    Sleep(1500);
     gameOver=true;
-    
+
 }
 
 
@@ -373,7 +373,7 @@ int main()
     setup();
     player();
     instruct();
-     
+
     while(!gameOver){
     blocks();
     Input_and_Logic();
@@ -399,7 +399,7 @@ void restart(){
 
      if((ch!='Y') && (ch!='N')&&(ch!='y')&&(ch!='n')){
        cout<<endl<<"\t\t\t\t\t NOTE: Invalid input enter Y or N ";
-       Sleep(1000);
+       Sleep(500);
        cin.clear();
        cin.ignore();
         restart();
@@ -423,7 +423,7 @@ void restart(){
   for(int i=0;i<10;i++){
     cout<<endl;
     }
-    cout<<"\t\t\t\t\t\t Enter Your name =  ";
+    cout<<"\t\t\t\t\t Enter Your name =  ";
     cin>>input;
 
     bool is_notvalid=false;  // Assume the input is valid until proven otherwise
@@ -440,7 +440,7 @@ void restart(){
       cout << "\n\t\t\t\t\t Invalid input Please try again(Alphabets Only)" << endl;
       Sleep(1000);
       player();
-    } 
-  
+    }
+
 
 }
