@@ -1,108 +1,214 @@
 #include <iostream>
+#include <windows.h>
+#include <conio.h>
 
 using namespace std;
 
-struct Node {
-    int data;
-    Node *left;
-    Node *right;
-} *root;
+class Node{
+   public:
+   int data;
+   Node *left;
+   Node *right;
 
-void insert(Node *node, int data) {
-    if (data < node->data) {
-        if (node->left == nullptr)
-            node->left = new Node{data, nullptr, nullptr};
-        else
-            insert(node->left, data);
-    } else if (data > node->data) {
-        if (node->right == nullptr)
-            node->right = new Node{data, nullptr, nullptr};
-        else
-            insert(node->right, data);
+   Node (int d){
+    this->data=d;
+    this->left=NULL;
+    this->right=NULL;
+}
+
+};
+
+
+//INSERTION
+Node* insertIntoBST(Node* root,int d){
+   //base case
+   if(root == NULL){
+       root=new Node(d);
+       return root;
+   }
+
+   if(d > root->data){
+    // right part insert
+    root->right = insertIntoBST(root->right,d);
+   }
+   else{
+    // left part insert
+    root->left = insertIntoBST(root->left,d);
+   }
+   
+   return root;
+}
+
+
+
+//SEARCH
+Node* searhinBST(Node *root,int key){
+    if(root==NULL){
+        return NULL;
     }
-}
-
-void insert(int data) {
-    if (root == nullptr) {
-        root = new Node{data, nullptr, nullptr};
-        return;
+    if(root->data==key){
+        return root;
     }
-    insert(root, data);
-}
-
-bool isLeaf(Node *node) {
-    return node->left == nullptr && node->right == nullptr;
-}
-
-bool isFullParent(Node *node) {
-    return node->left != nullptr && node->right != nullptr;
-}
-
-Node *remove(Node *node, int data) {
-    if (node == nullptr)
-        return nullptr;
-    if (data < node->data)
-        node->left = remove(node->left, data);
-    else if (data > node->data)
-        node->right = remove(node->right, data);
-    else {
-        if (isLeaf(node)) {
-            free(node);
-            return nullptr;
-        }
-        if (!isFullParent(node)) {
-            Node *tempNode = (node->left != nullptr) ? node->left : node->right;
-            free(node);
-            return tempNode;
-        }
-
-        Node *nextHighest = node->right;
-        Node *prevNode;
-
-        while (nextHighest->left != nullptr) {
-            prevNode = nextHighest;
-            nextHighest = nextHighest->left;
-        }
-
-        if (prevNode != nullptr) {
-            prevNode->left = (nextHighest->right != nullptr) ? nextHighest->right : nullptr;
-            nextHighest->right = node->right;
-        }
-        nextHighest->left = node->left;
-
-        free(node);
-        return nextHighest;
+    //data > key
+    if(root->data > key){
+        return searhinBST(root->left,key);
     }
-    return node;
+
+    //data<key
+    return searhinBST(root->right,key);
+}
+ 
+
+
+
+
+
+Node* inorderSucc(Node *root){
+    Node* curr= root;
+    while(curr && curr->left!=NULL){
+        curr=curr->left;
+    }
+    return curr;
+}
+//DELETION
+Node* deleteinBST(Node *root, int key){
+    if(key < root->data){
+        root->left=deleteinBST(root->left,key);
+    }
+    else if(key > root->data){
+        root->right=deleteinBST(root->right,key);
+    }
+    else{
+        if(root->left==NULL){
+            Node* temp=root->right;
+            free(root);
+            return temp;
+        }
+        else if(root->right==NULL){
+            Node* temp=root->left;
+            free(root);
+            return temp;
+        }
+
+        //case 3
+        Node* temp= inorderSucc(root->right);
+        root->data=temp->data;
+        root->right= deleteinBST(root->right,temp->data);
+    }
+
+    return root;
 }
 
-void remove(int data) {
-    root = remove(root, data);
+
+
+
+//inorder 
+void inorder(Node *root){
+  if(root == NULL){
+     return;
+  }
+  inorder(root->left);
+  cout<<root->data<<" ";
+  inorder(root->right);
 }
 
-void displayInOrder(Node *node) {
-    if (node == nullptr)
-        return;
-    displayInOrder(node->left);
-    cout << node->data << ", ";
-    displayInOrder(node->right);
+//preorder
+void preorder(Node *root){
+  if(root == NULL){
+     return;
+  }
+  cout<<root->data<<" ";
+  inorder(root->left);
+  inorder(root->right);
 }
 
-void displayInOrder() {
-    displayInOrder(root);
+//postorder
+void postorder(Node *root){
+  if(root == NULL){
+     return;
+  }
+  inorder(root->left);
+  inorder(root->right);
+  cout<<root->data<<" ";
 }
 
-int main() {
-    insert(5);
-    insert(10);
-    insert(7);
-    insert(9);
-    insert(8);
-    insert(3);
-    insert(1);
-    insert(4);
-displayInOrder();
-    remove(3);
 
+
+int main()
+{
+   Node *root=NULL;
+   int ch,key;
+ while(true){
+    system("CLS");
+   cout<<"Enter the options \n1.Insert \n2.Search \n3.Delete \n4.Display \n5.Exit = ";
+   cin>>ch;
+
+   switch(ch){
+      
+      case 1:
+      //Insertion
+      system("CLS");
+     root=insertIntoBST(root,5);
+     insertIntoBST(root,8);
+     insertIntoBST(root,69);
+     insertIntoBST(root,7);
+     insertIntoBST(root,1);
+     insertIntoBST(root,6);
+     insertIntoBST(root,2);
+     cout<<"Inserted";
+     Sleep(1000);
+      break;
+     
+      case 2:
+       //search 
+       system("CLS");
+       cout<<"Enter the key you want to search = ";
+       cin>>key;
+       if(searhinBST(root,key)==NULL){
+       cout<<"\nkey does not exist ";
+       }
+       else{
+       cout<<"\nkey exists";
+       cout<<endl;
+       }
+       getch();
+      break;
+
+      case 3:
+      //Delete
+      system("CLS");
+       cout<<"Enter the key you want to delete = ";
+       cin>>key;
+      root=deleteinBST(root,key);
+      cout<<"Deleted";
+      Sleep(1000);
+      break;
+
+     case 4:
+     //print inorder
+     system("CLS");
+     cout<<"Inorder\n";
+     inorder(root);
+     cout<<endl;
+
+     //print preorder
+     cout<<"Preorder\n";
+     preorder(root);
+     cout<<endl;
+
+     //print postorder
+     cout<<"Postorder\n";
+     postorder(root);
+     cout<<endl;
+
+     getch();
+     break;
+
+     case 5:
+     exit(0);
+     break;
+
+   }
+ }
     return 0;
 }

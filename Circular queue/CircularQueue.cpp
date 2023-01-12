@@ -42,7 +42,7 @@ if(Q.rear==-1 && Q.front==-1){
 }
 else{
    for(int i=Q.front; i<Q.rear+1; i++){
-    cout<<'\n'<<Q.a[i];
+    cout<<Q.a[i]<<" ";
    }
 }
 }
