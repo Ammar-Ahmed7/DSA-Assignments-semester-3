@@ -26,7 +26,7 @@ void insertatEnd(int d){
 
    while(l->next!=NULL){
     l=l->next;
-  }
+ }
 
    if (l->next==NULL){
     temp=new Node;
@@ -56,6 +56,7 @@ void insertatEnd(int d){
       l->next=temp;
      }
   }
+
 
   void Cinsert(int d){
     l=start;
