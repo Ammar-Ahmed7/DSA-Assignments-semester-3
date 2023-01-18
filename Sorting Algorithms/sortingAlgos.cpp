@@ -135,6 +135,7 @@ int main()
       case 6:
       system("Cls");
       quicksort(arr,5,2);
+      getch();
       break;
 
       case 7:
