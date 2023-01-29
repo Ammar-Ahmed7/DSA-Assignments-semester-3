@@ -14,6 +14,10 @@ void EnQ(int x){
     if(Q.rear==sizeof(Q.a)){
       cout<<"OVERFLOW";
     }
+    else if(Q.rear==-1 && Q.front==-1){
+       Q.rear=Q.front=0;
+       Q.a[Q.rear]=x;
+    }
     else if((Q.rear+1)%sizeof(Q.a)==Q.front){
       cout<<"Queue is FUll";
     }
